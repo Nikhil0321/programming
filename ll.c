@@ -160,6 +160,7 @@ void insert_after(int key,int new_val)
     new_node->next=tmp->next;
     tmp->next=new_node;
 }
+<<<<<<< HEAD
 void insertAtPosition(int pos_to_add_data,int n)
 {
     struct node *tmp,*new_node,*pre=NULL;
@@ -171,6 +172,21 @@ void insertAtPosition(int pos_to_add_data,int n)
     {
         printf("Empty Linked List");
         tmp=first;
+=======
+void insertAtPosition(int n)
+{
+    struct node *tmp,*new_node,*pre=NULL;
+    int pos,pos_to_add_data;
+    new_node=(struct node *)malloc(sizeof(struct node));
+    new_node->data=n;
+    new_node->next=NULL;
+    printf("Enter the position to insert data\n");
+    scanf("%d",&pos_to_add_data);
+    if(first==NULL && pos!=1)
+    {
+        printf("Empty Linked List");
+        tmp=start;
+>>>>>>> 85de5f7c88fa917049eb07e42fad6e4e4af9115a
         return;
 
     }
@@ -193,10 +209,17 @@ void insertAtPosition(int pos_to_add_data,int n)
 }
 int main()
 {
+<<<<<<< HEAD
     int x=1,n,data,key,new_val;
     while(x)
     {
         printf("Enter 1 to add at Beginning\nEnter 2 to insert new node at the end\nEnter 3 to delete first node\nEnter 4 to display list \nEnter 5 to search element \nEnter 6 to display middle element\nEnter 7 to delete last node\nEnter 8 to insert after the data\nEnter 9 for insertion at given position\nEnter 0 to end\n");
+=======
+    int x=1,data,key,new_val;
+    while(x)
+    {
+        printf("Enter 1 to add at Beginning\nEnter 2 to insert new node at the end\nEnter 3 to delete first node\nEnter 4 to display list \nEnter 5 to search element \nEnter 6 to display middle element\nEnter 7 to delete last node\nEnter 8 to insert after the data\nEnter 0 to end\n");
+>>>>>>> 85de5f7c88fa917049eb07e42fad6e4e4af9115a
         scanf("%d",&x);
         switch(x)
         {
@@ -231,6 +254,7 @@ int main()
             scanf("%d",&new_val);
             insert_after(key,new_val);
             break;
+<<<<<<< HEAD
         case 9:
             printf("enter the position ");
             scanf("%d",&n);
@@ -238,10 +262,13 @@ int main()
             scanf("%d",&data);
             insertAtPosition(n,data);
 
+=======
+>>>>>>> 85de5f7c88fa917049eb07e42fad6e4e4af9115a
         default : break;
     }
     }
     return 0;
+<<<<<<< HEAD
 }
 
 
@@ -249,3 +276,6 @@ int main()
 
 
 
+=======
+}
+>>>>>>> 85de5f7c88fa917049eb07e42fad6e4e4af9115a
