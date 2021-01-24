@@ -194,12 +194,27 @@ void insertAtPosition(int pos_to_add_data,int n)
         return;
     }
 }
+void reverse()
+{
+    struct node *cur,*pre,*next;
+    cur=first;
+    pre=NULL;
+    next=NULL;
+    while(cur!=NULL)
+    {
+        next=cur->next;
+        cur->next=pre;
+        pre=cur;
+        cur=next;
+    }
+    first=pre;
+}
 int main()
 {
     int x=1,n,data,key,new_val;
     while(x)
     {
-        printf("Enter 1 to add at Beginning\nEnter 2 to insert new node at the end\nEnter 3 to delete first node\nEnter 4 to display list \nEnter 5 to search element \nEnter 6 to display middle element\nEnter 7 to delete last node\nEnter 8 to insert after the data\nEnter 9 to enter at position\nEnter 0 to end\n");
+        printf("Enter 1 to add at Beginning\nEnter 2 to insert new node at the end\nEnter 3 to delete first node\nEnter 4 to display list \nEnter 5 to search element \nEnter 6 to display middle element\nEnter 7 to delete last node\nEnter 8 to insert after the data\nEnter 9 to enter at position\nEnter 10 to reverse a linked list\nEnter 0 to end\n");
         scanf("%d",&x);
         switch(x)
         {
@@ -240,6 +255,10 @@ int main()
             printf("\nEnter the data : ");
             scanf("%d",&data);
             insertAtPosition(n,data);
+            break;
+        case 10:
+            reverse();
+            display();
             break;
         default : break;
     }
