@@ -14,10 +14,9 @@ void insertNodeAtEnd(int n)
     temp = first;
     if(first==NULL)
     {
-    first=newNode;
-    return;
+		first=newNode;
+		return;
     }
-    // Traverse to the last node
     while(temp->next != NULL)
     temp = temp->next;
     temp->next = newNode;
@@ -96,7 +95,7 @@ int main()
     int x=1,n,data,key,new_val;
     while(x)
     {
-        printf("Enter 1 to insert new node at the end\nEnter 2 to delete first node\nEnter 3 to display list \nEnter 4 to enter at position\nEnter 5 to reverse a linked list\nEnter 0 to end\n");
+        printf("Enter 1 to insert new node at the end\nEnter 2 to delete first node\nEnter 3 to enter at position \nEnter 4 to enter to reverse the linked list\nEnter 5 to display\nEnter 0 to end\n");
         scanf("%d",&x);
         switch(x)
         {
@@ -107,21 +106,21 @@ int main()
             break;
         case 2:deleteFirstNode();
             break;
-        case 3: display();
-            break;
-	    case 4:
+	    case 3:
             printf("Enter the position : ");
             scanf("%d",&n);
             printf("\nEnter the data : ");
             scanf("%d",&data);
-            insertAtPosition(n,data);
+            insertAtPosition(data,n);
             break;
-        case 5:
+        case 4:
             reverse();
             display();
             break;
+        case 5: display();
+            break;
         default : break;
-    }
+		}
     }
     return 0;
 }
