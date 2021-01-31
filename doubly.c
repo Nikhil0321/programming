@@ -36,7 +36,6 @@ void deleteFirstNode()
         struct node *toDelete;
         toDelete=first;
         first=first->rlink;
-        //first->llink=NULL;
         printf("\nData deleted = %d\n",toDelete->data);
         free(toDelete);
         printf("SUCCESSFULLY DELETED FIRST NODE FROM LIST\n");
@@ -59,68 +58,34 @@ void display()
         }   
     }
 }
-
- /*void deleteatgivenposition(int pos)
- {
-     struct node *q,**p;
-     q=*p;
-     int i=1;
-     while((q!=NULL)&&(i<pos))
-     {
-         i++;
-         q=q->rlink;
-     }
-     if(q!=NULL)
-     {
-         if((q->llink=NULL)&&(q->rlink=NULL))
-         *p=NULL;
-         else if(q->llink==NULL)
-         {
-             *p=q->rlink;
-             *p->llink=NULL;
-         }
-         else if(q->rlink==NULL)
-         q->llink->rlink=NULL;
-         else
-         {
-             q->llink->rlink=q->rlink;
-             q->rlink->llink=q->llink;  
-         }free(q);
-    }
-    else
-    {
-         printf("inavlid position\n");
-    }
- }*/
 void deleteatgivenposition(int pos)
 {
-        struct node *temp=first,*pre;
-        int i;
-        if(pos==1)
-        {
-            deleteFirstNode();
-            return;
-        }
-        if(pos<=0||first==NULL)
-        {
-            printf("cannot delete\n");
-        }
-       for(i=0;i<pos; i++)
-        {
-            temp=temp->rlink;
-        }
-        if(temp!=NULL)
-        {
-            temp->llink->rlink=temp->rlink;  
-            temp->rlink->llink=temp->llink;  
-            free(temp);
-        }
-        
+    struct node *temp=first,*pre;
+    int i;
+    if(pos==1)
+    {
+        deleteFirstNode();
+        return;
+    }
+    for(i=1;i<pos&&temp!=NULL;i++)
+    {
+        temp=temp->rlink;
+    }
+    if(temp->rlink!=NULL)
+    {
+        temp->llink->rlink=temp->rlink;  
+        temp->rlink->llink=temp->llink;  
+        printf("%d deleted successfully",temp->data);
+        free(temp);
+        return;
+    }
+    if(temp->rlink==NULL)
+    {
+        temp->llink->rlink=NULL;
+        printf("%d is deleted",temp->data);
+        free(temp);
+    }
 }
-
-
-
-
 void reverse()
 {
     struct node *cur,*pre,*rlink;
