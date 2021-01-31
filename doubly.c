@@ -59,47 +59,68 @@ void display()
         }   
     }
 }
-void deleteAtPosition(int info,int pos)
+
+ /*void deleteatgivenposition(int pos)
+ {
+     struct node *q,**p;
+     q=*p;
+     int i=1;
+     while((q!=NULL)&&(i<pos))
+     {
+         i++;
+         q=q->rlink;
+     }
+     if(q!=NULL)
+     {
+         if((q->llink=NULL)&&(q->rlink=NULL))
+         *p=NULL;
+         else if(q->llink==NULL)
+         {
+             *p=q->rlink;
+             *p->llink=NULL;
+         }
+         else if(q->rlink==NULL)
+         q->llink->rlink=NULL;
+         else
+         {
+             q->llink->rlink=q->rlink;
+             q->rlink->llink=q->llink;  
+         }free(q);
+    }
+    else
+    {
+         printf("inavlid position\n");
+    }
+ }*/
+void deleteatgivenposition(int pos)
 {
-    if(pos==1)
-    {
-        deleteFirstNode();
-    }
-    else while(temp->dta)
-    {
-        /* code */
-    }
-    
-
-
-
-
-
-
-
-
-
-
-
-
-    struct node *tmp=first,*new_node;
-    int i;
-    new_node=(struct node *)malloc(sizeof(struct node));
-    new_node->data=info;
-    new_node->rlink=NULL;
-    if(pos==1)
-    {
-        new_node->rlink=tmp;
-        first=new_node;
-        return;
-    }
-    for(i=1;i<pos-1;i++)
-    {
-        tmp=tmp->rlink;
-    }
-    new_node->rlink=tmp->rlink;
-    tmp->rlink=new_node;
+        struct node *temp=first,*pre;
+        int i;
+        if(pos==1)
+        {
+            deleteFirstNode();
+            return;
+        }
+        if(pos<=0||first==NULL)
+        {
+            printf("cannot delete\n");
+        }
+       for(i=0;i<pos; i++)
+        {
+            temp=temp->rlink;
+        }
+        if(temp!=NULL)
+        {
+            temp->llink->rlink=temp->rlink;  
+            temp->rlink->llink=temp->llink;  
+            free(temp);
+        }
+        
 }
+
+
+
+
 void reverse()
 {
     struct node *cur,*pre,*rlink;
@@ -165,7 +186,7 @@ int main()
             case 3:
             printf("Enter the position : ");
             scanf("%d",&n);
-            deleteAtPosition(data,n);
+            deleteatgivenposition(n);
             break;
             case 4:
             reverse();
