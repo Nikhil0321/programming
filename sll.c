@@ -14,8 +14,8 @@ void insertNodeAtEnd(int n)
     temp = first;
     if(first==NULL)
     {
-		first=newNode;
-		return;
+    first=newNode;
+    return;
     }
     while(temp->next != NULL)
     temp = temp->next;
@@ -43,7 +43,7 @@ void display()
     struct node * temp=first;
     if(first==NULL)
     {
-        printf("no elements in the list");
+        printf("no elements in the list\n");
     }
     else
     {
@@ -62,18 +62,27 @@ void insertAtPosition(int info,int pos)
     new_node=(struct node *)malloc(sizeof(struct node));
     new_node->data=info;
     new_node->next=NULL;
-    if(pos==1)
+    struct node *temp;
+    temp=first;
+    if(pos>=1)
     {
-        new_node->next=tmp;
-        first=new_node;
-        return;
+        if(pos==1)
+        {
+            new_node->next=tmp;
+            first=new_node;
+            return;
+        }
+        for(i=1;i<pos-1;i++)
+        {
+            tmp=tmp->next;
+        }
+        new_node->next=tmp->next;
+        tmp->next=new_node;
     }
-    for(i=1;i<pos-1;i++)
+    else
     {
-        tmp=tmp->next;
-    }
-    new_node->next=tmp->next;
-    tmp->next=new_node;
+        printf("Invalid Position\n");
+    } 
 }
 void reverse()
 {
@@ -95,34 +104,36 @@ int main()
     int x=1,n,data,key,new_val;
     while(x)
     {
-        printf("Enter 1 to insert new node at the end\nEnter 2 to delete first node\nEnter 3 to enter at position \nEnter 4 to enter to reverse the linked list\nEnter 5 to display\nEnter 0 to end\n");
+        printf("Enter 1 to insert new node at the end\nEnter 2 to delete first node\nEnter 3 to enter at position \nEnter 4 to reverse the linked list\nEnter 5 to display\nEnter 0 to end\n");
         scanf("%d",&x);
         switch(x)
         {
-            case 1:
-                printf("\nEnter data to insert at end of the list: \n");
-                scanf("%d", &data);
-                insertNodeAtEnd(data);
-                break;
-            case 2:deleteFirstNode();
-                break;
-	        case 3:
-                printf("Enter the position : ");
-                scanf("%d",&n);
-                printf("\nEnter the data : ");
-                scanf("%d",&data);
-                insertAtPosition(data,n);
-                break;
-            case 4:
-                reverse();
-                display();
-                break;
-            case 5: 
-                display();
-                break;
-            default: 
-                break;
-		}
+        case 1:
+            printf("\nEnter data to insert at end of the list: \n");
+            scanf("%d", &data);
+            insertNodeAtEnd(data);
+            break;
+        case 2:deleteFirstNode();
+            break;
+	    case 3:
+            printf("Enter the position : ");
+            scanf("%d",&n);
+            printf("\nEnter the data : ");
+            scanf("%d",&data);
+            insertAtPosition(data,n);
+            break;
+        case 4:
+            reverse();
+            display();
+            break;
+        case 5: display();
+            break;
+		case 0:
+			break;
+        default :   
+            printf("invalid choice\n");
+            break;
+        }
     }
     return 0;
 }
